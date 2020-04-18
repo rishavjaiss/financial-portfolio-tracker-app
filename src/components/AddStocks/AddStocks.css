@@ -1,0 +1,23 @@
+h2 {
+  font-weight: 500;
+}
+.AddStocksTitle {
+  margin: 20px 20%;
+}
+ul {
+  list-style: none;
+}
+.StockButton {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: -2px 5px #888888;
+  width: 100px;
+  background-color: white;
+}
+.StockButton:hover {
+  background-color: rgb(197, 197, 189);
+}
+span {
+  font-size: large;
+  font-weight: 400;
+}

@@ -1,0 +1,31 @@
+.MyStocks {
+  margin: 20px 20%;
+}
+h2 {
+  font-weight: 500;
+}
+#title {
+  font-size: x-large;
+  float: left;
+}
+table {
+  border: 0.5px solid rgb(211, 206, 206);
+}
+th,
+td {
+  padding: 10px;
+}
+th {
+  background-color: rgb(90, 151, 221);
+  color: white;
+  text-align: left;
+}
+tr:nth-child(even) {
+  background-color: #c2bcbc;
+}
+.StopTrackingBtn {
+  padding: 5px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}

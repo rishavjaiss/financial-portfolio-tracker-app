@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import * as serviceWorker from "./serviceWorker";
+import Navbar from "./components/Navbar/Navbar";
+import MyStocks from "./components/MyStocks/MyStocks";
+import AddStocks from "./components/AddStocks/AddStocks";
+import HorizontalLine from "./components/Horizontal Line/HorizontalLine";
+// import Axios from "./components/Axios";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Navbar />
+    <MyStocks />
+    <HorizontalLine />
+    <AddStocks />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

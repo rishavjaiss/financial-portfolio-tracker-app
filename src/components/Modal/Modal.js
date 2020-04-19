@@ -4,9 +4,9 @@ import Axios from "axios";
 
 class Modal extends Component {
   putRequest = (stock) => {
-    let shares = document.getElementById("shares").value;
-    let buyprice = document.getElementById("buyprice").value;
-    let buydate = document.getElementById("buydate").textContent;
+    let shares = document.getElementById("noShares").value;
+    let buyprice = document.getElementById("buyPrice").value;
+    let buydate = document.getElementById("buyDate").textContent;
 
     if (shares > 0 && buyprice > 0) {
       Axios.put(
@@ -38,7 +38,7 @@ class Modal extends Component {
     // }
     return (
       <>
-        <div className="modal">
+        <div className="AddStockForm">
           <div className="modal-content">
             <span className="close" onClick={() => this.props.showChange()}>
               &times;
@@ -55,7 +55,7 @@ class Modal extends Component {
             <div>
               <span className="modal-label">No. of Shares :</span>
               <input
-                id="shares"
+                id="noShares"
                 type="number"
                 className="modal-value"
                 min="1"
@@ -69,7 +69,7 @@ class Modal extends Component {
               <div className="modal-value">
                 <strong>&#8377;</strong>&nbsp;
                 <input
-                  id="buyprice"
+                  id="buyPrice"
                   type="number"
                   min="1"
                   placeholder="Buy Price"
@@ -80,7 +80,7 @@ class Modal extends Component {
             <br></br>
             <div>
               <span className="modal-label">Buy Date :</span>
-              <span id="buydate" className="modal-value">
+              <span id="buyDate" className="modal-value">
                 {today.getFullYear()}-0{today.getMonth() + 1}-{today.getDate()}
               </span>
             </div>
@@ -88,6 +88,7 @@ class Modal extends Component {
             <br></br>
             <div style={{ textAlign: "center" }}>
               <button
+                id="AddButton"
                 className="modaladdbtn"
                 onClick={this.putRequest.bind(this, this.props.selectedStock)}
               >

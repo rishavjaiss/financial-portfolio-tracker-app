@@ -66,13 +66,15 @@ class Modal extends Component {
             <br></br>
             <div>
               <span className="modal-label">Buy Price :</span>
-              <input
-                id="buyprice"
-                type="number"
-                className="modal-value"
-                min="1"
-                placeholder="Buy Price"
-              ></input>
+              <div className="modal-value">
+                <strong>&#8377;</strong>&nbsp;
+                <input
+                  id="buyprice"
+                  type="number"
+                  min="1"
+                  placeholder="Buy Price"
+                ></input>
+              </div>
             </div>
             <br></br>
             <br></br>

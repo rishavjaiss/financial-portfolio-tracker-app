@@ -3,41 +3,73 @@ import "./MyStocks.css";
 import axios from "axios";
 class MyStocks extends Component {
   state = {
-    myStocks: [],
-    apicall: [],
+    stockList: {},
   };
-
-  handleDelete = (event) => {
-    console.log(event.target.id);
-
-    // axios.delete(
-    //   `https://financial-portfolio-trac-73f3e.firebaseio.com/myStocks/${id}.json`
-    // );
-
-    // axios.post(
-    //   "https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json",
-    //   {
-    //     symbol: this.state.myStocks[id].symbol,
-    //     name: this.state.myStocks[id].name,
-    //   }
-    // );
+  createMyStockLIs = () => {
+    let stockLIs = [];
+    for (let stockKey in this.state.stockList) {
+      const stock = this.state.stockList[stockKey];
+      if (!stock.isUser) {
+        continue;
+      }
+      stockLIs.push(
+        <tr key={stock.symbol}>
+          <td>{stock.symbol}</td>
+          <td>{stock.name}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button
+              className="StopTrackingBtn"
+              id={stock.symbol}
+              onClick={this.handleDelete.bind(this, stock)}
+            >
+              Stop Tracking
+            </button>
+          </td>
+        </tr>
+      );
+    }
+    return stockLIs;
   };
-
-  componentDidMount() {
+  handleDelete = (stock) => {
+    axios.put(
+      "https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/" +
+        stock.symbol +
+        ".json",
+      {
+        symbol: stock.symbol,
+        name: stock.name,
+        isUser: false,
+      }
+    );
+  };
+  componentDidUpdate() {
     axios
       .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json`
+        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
       )
-      .then((myStocks) => {
-        this.setState({ myStocks: myStocks.data });
+      .then((res) => {
+        this.setState({ stockList: res.data });
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  componentWillUpdate() {
-    console.log("Axios Fetched");
+  componentDidMount() {
+    axios
+      .get(
+        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
+      )
+      .then((res) => {
+        this.setState({ stockList: res.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -56,27 +88,7 @@ class MyStocks extends Component {
               <th></th>
             </tr>
           </thead>
-          <tbody>
-            {this.state.myStocks.map((item, index) => (
-              <tr key={index}>
-                <td>{item.symbol}</td>
-                <td>{item.name}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button
-                    className="StopTrackingBtn"
-                    id={index}
-                    onClick={this.handleDelete}
-                  >
-                    Stop Tracking
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody>{this.createMyStockLIs()}</tbody>
         </table>
       </div>
     );

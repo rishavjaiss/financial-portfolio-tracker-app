@@ -26,8 +26,8 @@ class Axios extends Component {
       <>
         <div className="App">
           <ul>
-            {this.state.value.map((val) => (
-              <li>
+            {this.state.value.map((val, index) => (
+              <li key={index}>
                 {val.symbol} : {val.name}
               </li>
             ))}

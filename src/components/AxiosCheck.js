@@ -9,12 +9,12 @@ class Axios extends Component {
   componentDidMount() {
     axios
       .get(
-        // `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=K4C1OCSP489EZS33`
-        // "https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json"
-        "https://financial-portfolio-trac-73f3e.firebaseio.com/myStocks.json"
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=K4C1OCSP489EZS33`
       )
       .then((res) => {
-        this.setState({ value: res.data }, () => console.log(this.state.value));
+        this.setState({ value: res.data }, () =>
+          console.log(this.state.value["Time Series (Daily)"])
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -25,13 +25,14 @@ class Axios extends Component {
     return (
       <>
         <div className="App">
-          <ul>
+          <h1>CHECK CONSOLE</h1>
+          {/* <ul>
             {this.state.value.map((val, index) => (
               <li key={index}>
                 {val.symbol} : {val.name}
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </>
     );

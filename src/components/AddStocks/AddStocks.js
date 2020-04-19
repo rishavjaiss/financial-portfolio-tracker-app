@@ -40,6 +40,9 @@ class AddStocks extends Component {
         console.log(error);
       });
   }
+  showChange = () => {
+    this.setState({ isModalVisible: false });
+  };
 
   createStockLIs = () => {
     let stockLIs = [];
@@ -74,6 +77,7 @@ class AddStocks extends Component {
         <Modal
           show={this.state.isModalVisible}
           selectedStock={this.state.selectedStock}
+          showChange={this.showChange}
         />
       </div>
     );

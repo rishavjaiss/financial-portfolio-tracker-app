@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./MyStocks.css";
 import axios from "axios";
+import AlphaCall from "../AlphaCall.js";
 class MyStocks extends Component {
   state = {
     stockList: {},
@@ -16,8 +17,8 @@ class MyStocks extends Component {
         <tr key={stock.symbol}>
           <td>{stock.symbol}</td>
           <td>{stock.name}</td>
-          <td></td>
-          <td></td>
+          <td>{stock.shares}</td>
+          <td>{stock.buyprice}</td>
           <td></td>
           <td></td>
           <td>
@@ -52,7 +53,12 @@ class MyStocks extends Component {
         `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
       )
       .then((res) => {
-        this.setState({ stockList: res.data });
+        this.setState({ stockList: res.data }, () => (
+          <AlphaCall
+            stocks={this.state.stockList.symbol}
+            date={this.state.stockList.buydate}
+          />
+        ));
       })
       .catch((error) => {
         console.log(error);

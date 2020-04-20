@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import MyStocks from "./components/MyStocks/MyStocks";
 import AddStocks from "./components/AddStocks/AddStocks";
 import HorizontalLine from "./components/Horizontal Line/HorizontalLine";
+
 // import Axios from "./components/Axios";
 
 ReactDOM.render(

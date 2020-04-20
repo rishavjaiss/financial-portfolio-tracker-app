@@ -12,26 +12,28 @@ class MyStocks extends Component {
       const stock = this.state.stockList[stockKey];
       if (!stock.isUser) {
         continue;
+      } else {
+        // <AlphaCall stockSymbol={stock.symbol} buyprice={stock.buyprice} />;
+        stockLIs.push(
+          <tr key={stock.symbol}>
+            <td>{stock.symbol}</td>
+            <td>{stock.name}</td>
+            <td>{stock.shares}</td>
+            <td>{stock.buyprice}</td>
+            <td>{this.props.price}</td>
+            <td>{this.props.profit}</td>
+            <td>
+              <button
+                className="StopTrackingBtn"
+                id={stock.symbol}
+                onClick={this.handleDelete.bind(this, stock)}
+              >
+                Stop Tracking
+              </button>
+            </td>
+          </tr>
+        );
       }
-      stockLIs.push(
-        <tr key={stock.symbol}>
-          <td>{stock.symbol}</td>
-          <td>{stock.name}</td>
-          <td>{stock.shares}</td>
-          <td>{stock.buyprice}</td>
-          <td></td>
-          <td></td>
-          <td>
-            <button
-              className="StopTrackingBtn"
-              id={stock.symbol}
-              onClick={this.handleDelete.bind(this, stock)}
-            >
-              Stop Tracking
-            </button>
-          </td>
-        </tr>
-      );
     }
     return stockLIs;
   };
@@ -50,15 +52,10 @@ class MyStocks extends Component {
   componentDidUpdate() {
     axios
       .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
+        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json`
       )
       .then((res) => {
-        this.setState({ stockList: res.data }, () => (
-          <AlphaCall
-            stocks={this.state.stockList.symbol}
-            date={this.state.stockList.buydate}
-          />
-        ));
+        this.setState({ stockList: res.data });
       })
       .catch((error) => {
         console.log(error);
@@ -68,7 +65,7 @@ class MyStocks extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
+        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json`
       )
       .then((res) => {
         this.setState({ stockList: res.data });

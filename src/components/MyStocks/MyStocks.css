@@ -21,7 +21,7 @@ th {
   text-align: left;
 }
 tr:nth-child(even) {
-  background-color: #c2bcbc;
+  background-color: #d3cfcf;
 }
 .StopTrackingBtn {
   padding: 5px;

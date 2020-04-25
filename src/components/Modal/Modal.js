@@ -22,7 +22,7 @@ class Modal extends Component {
           buydate: buydate,
         }
       );
-      this.props.showChange();
+      this.props.toggle();
     } else {
       alert("Please fill all the fields!");
     }
@@ -33,14 +33,11 @@ class Modal extends Component {
       return null;
     }
     let today = new Date();
-    // if (today.getDay() === "0" || "6") {
-    //   return alert("You can't add stocks on weekend");
-    // }
     return (
       <>
         <div className="AddStockForm">
           <div className="modal-content">
-            <span className="close" onClick={() => this.props.showChange()}>
+            <span className="close" onClick={() => this.props.toggle()}>
               &times;
             </span>
             <h1>Add {this.props.selectedStock?.name} to my stocks</h1>

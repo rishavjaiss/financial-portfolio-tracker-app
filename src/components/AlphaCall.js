@@ -3,7 +3,7 @@ import axios from "axios";
 import MyStocks from "./MyStocks/MyStocks.js";
 export default class AlphaCall extends Component {
   state = {
-    alphacall: [],
+    alphacall: {},
   };
 
   componentDidMount() {

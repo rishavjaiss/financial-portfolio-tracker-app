@@ -3,18 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import Navbar from "./components/Navbar/Navbar";
-import MyStocks from "./components/MyStocks/MyStocks";
-import AddStocks from "./components/AddStocks/AddStocks";
-import HorizontalLine from "./components/Horizontal Line/HorizontalLine";
-
-// import Axios from "./components/Axios";
+import StockWrapper from "./components/StockWrapper";
 
 ReactDOM.render(
   <React.StrictMode>
     <Navbar />
-    <MyStocks />
-    <HorizontalLine />
-    <AddStocks />
+    <StockWrapper />
   </React.StrictMode>,
   document.getElementById("root")
 );

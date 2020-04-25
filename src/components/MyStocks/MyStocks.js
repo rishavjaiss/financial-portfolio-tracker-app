@@ -1,26 +1,25 @@
 import React, { Component } from "react";
 import "./MyStocks.css";
 import axios from "axios";
-import AlphaCall from "../AlphaCall.js";
 class MyStocks extends Component {
   state = {
-    stockList: {},
+    currentValue: [],
   };
+
   createMyStockLIs = () => {
-    let stockLIs = [];
-    for (let stockKey in this.state.stockList) {
-      const stock = this.state.stockList[stockKey];
+    var stockLIs = [];
+    for (let stockKey in this.props.stocks) {
+      const stock = this.props.stocks[stockKey];
       if (!stock.isUser) {
         continue;
       } else {
-        // <AlphaCall stockSymbol={stock.symbol} buyprice={stock.buyprice} />;
         stockLIs.push(
           <tr key={stock.symbol}>
             <td>{stock.symbol}</td>
             <td>{stock.name}</td>
             <td>{stock.shares}</td>
             <td>{stock.buyprice}</td>
-            <td>{this.props.price}</td>
+            <td>{this.getCurrentPrice(stock.symbol)}</td>
             <td>{this.props.profit}</td>
             <td>
               <button
@@ -49,31 +48,25 @@ class MyStocks extends Component {
       }
     );
   };
-  componentDidUpdate() {
-    axios
-      .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json`
-      )
+  getCurrentPrice = (symbol) => {
+    var API_KEY = "5CF1O9FBXRKM2TA7";
+    var stocksUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${"MSFT"}&apikey=${API_KEY}&datatype=csv`;
+    fetch(stocksUrl)
+      .then((res) => res.text())
       .then((res) => {
-        this.setState({ stockList: res.data });
+        debugger;
+        this.setState(
+          {
+            currentValue: res.text().data.split("\n")[1].split(",")[4],
+          },
+          () => console.log(this.state.currentValue)
+        );
       })
       .catch((error) => {
         console.log(error);
       });
-  }
-
-  componentDidMount() {
-    axios
-      .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks.json`
-      )
-      .then((res) => {
-        this.setState({ stockList: res.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    debugger;
+  };
 
   render() {
     return (

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./AddStocks.css";
 import Modal from "../Modal/Modal.js";
 class AddStocks extends Component {
@@ -15,39 +14,15 @@ class AddStocks extends Component {
       selectedStock,
     });
   };
-
-  componentDidMount() {
-    axios
-      .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
-      )
-      .then((res) => {
-        this.setState({ stockList: res.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  componentDidUpdate() {
-    axios
-      .get(
-        `https://financial-portfolio-trac-73f3e.firebaseio.com/addStocks/.json`
-      )
-      .then((res) => {
-        this.setState({ stockList: res.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  showChange = () => {
+  toggleModal = () => {
+    // this.props.updateStock();
     this.setState({ isModalVisible: false });
   };
 
   createStockLIs = () => {
     let stockLIs = [];
-    for (let stockKey in this.state.stockList) {
-      const stock = this.state.stockList[stockKey];
+    for (let stockKey in this.props.stocks) {
+      const stock = this.props.stocks[stockKey];
       if (stock.isUser) {
         continue;
       }
@@ -77,7 +52,7 @@ class AddStocks extends Component {
         <Modal
           show={this.state.isModalVisible}
           selectedStock={this.state.selectedStock}
-          showChange={this.showChange}
+          toggle={this.toggleModal}
         />
       </div>
     );

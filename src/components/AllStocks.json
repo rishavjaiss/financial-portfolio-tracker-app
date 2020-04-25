@@ -1,35 +1,31 @@
 {
   "addStocks": [
     {
-      "0": {
+      "AMZN": {
         "name": "Amazon.com Inc",
         "symbol": "AMZN"
       },
-      "1": {
+      "HD": {
         "name": "Home Depot Inc.",
         "symbol": "HD"
       },
-      "2": {
+      "AAPL": {
         "name": "Apple Inc.",
         "symbol": "AAPL"
       },
-      "3": {
+      "TWTR": {
         "name": "Twitter Inc",
         "symbol": "TWTR"
       },
-      "4": {
+      "GS": {
         "name": "Goldman Sachs Group Inc.",
         "symbol": "GS"
       },
-      "5": {
-        "name": "Amazon.com, Inc.",
-        "symbol": "AMZN"
-      },
-      "6": {
+      "DIS": {
         "name": "The Walt Disney Company",
         "symbol": "DIS"
       },
-      "7": {
+      "MSFT": {
         "name": "Microsoft Corporation",
         "symbol": "MSFT"
       }

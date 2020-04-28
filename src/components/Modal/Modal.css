@@ -44,7 +44,7 @@
 h1 {
   text-align: center;
 }
-.modaladdbtn {
+#modaladdbtn {
   padding: 15px;
   font-weight: 400;
   border-radius: 10px;

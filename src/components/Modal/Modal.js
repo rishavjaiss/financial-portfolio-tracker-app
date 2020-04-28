@@ -86,8 +86,8 @@ class Modal extends Component {
             <br></br>
             <div style={{ textAlign: "center" }}>
               <button
-                id="AddButton"
-                className="modaladdbtn"
+                id="modaladdbtn"
+                className="AddButton"
                 onClick={this.putRequest.bind(this, this.props.selectedStock)}
               >
                 Add

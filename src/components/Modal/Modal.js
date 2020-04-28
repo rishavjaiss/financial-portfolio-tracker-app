@@ -6,7 +6,7 @@ class Modal extends Component {
   putRequest = (stock) => {
     let shares = document.getElementById("noShares").value;
     let buyprice = document.getElementById("buyPrice").value;
-    let buydate = document.getElementById("buyDate").textContent;
+    let buydate = document.getElementById("buyDate").value;
 
     if (shares > 0 && buyprice > 0) {
       Axios.put(

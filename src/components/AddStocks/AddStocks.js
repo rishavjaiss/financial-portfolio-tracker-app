@@ -15,7 +15,6 @@ class AddStocks extends Component {
     });
   };
   toggleModal = () => {
-    // this.props.updateStock();
     this.setState({ isModalVisible: false });
   };
 
@@ -53,6 +52,7 @@ class AddStocks extends Component {
           show={this.state.isModalVisible}
           selectedStock={this.state.selectedStock}
           toggle={this.toggleModal}
+          updateStocks={this.props.updateStocks}
         />
       </div>
     );

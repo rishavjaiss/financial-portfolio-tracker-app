@@ -21,8 +21,9 @@ class Modal extends Component {
           buyprice: buyprice,
           buydate: buydate,
         }
-      );
-      this.props.toggle();
+      )
+        .then(() => this.props.updateStocks())
+        .then(() => this.props.toggle());
     } else {
       alert("Please fill all the fields!");
     }
@@ -78,7 +79,7 @@ class Modal extends Component {
             <div>
               <span className="modal-label">Buy Date :</span>
               <span id="buyDate" className="modal-value">
-                {today.getFullYear()}-0{today.getMonth() + 1}-{today.getDate()}
+                {today.getDate()}-0{today.getMonth() + 1}-{today.getFullYear()}
               </span>
             </div>
             <br></br>

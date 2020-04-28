@@ -33,9 +33,6 @@ class Modal extends Component {
     if (!this.props.show) {
       return null;
     }
-    let today = new Date();
-    let buyDate =
-      today.getDate() - +0 + today.getMonth() + 1 - today.getFullYear();
     return (
       <>
         <div className="AddStockForm">
@@ -80,7 +77,7 @@ class Modal extends Component {
             <br></br>
             <div>
               <span className="modal-label">Buy Date :</span>
-              <input id="buyDate" className="modal-value"></input>
+              <input id="buyDate" type="date" className="modal-value"></input>
             </div>
             <br></br>
             <br></br>
